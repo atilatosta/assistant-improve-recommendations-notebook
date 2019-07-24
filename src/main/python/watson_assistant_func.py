@@ -48,7 +48,7 @@ def get_logs(num_logs, log_list, project_creds, log_filter=None):
                     page_limit=500,
                     cursor=current_cursor,
                     filter=log_filter
-                )
+                ).get_result()
                 min_num = min(num_logs, len(logs_response['logs']))
                 log_list.extend(logs_response['logs'][:min_num])
                 print('\r{} logs retrieved'.format(len(log_list)), end='')
@@ -121,7 +121,7 @@ def get_logs_jupyter(num_logs, log_list, workspace_creds, log_filter=None):
                     page_limit=500,
                     cursor=current_cursor,
                     filter=log_filter
-                ).result
+                ).get_result()
                 min_num = min(num_logs, len(logs_response['logs']))
                 log_list.extend(logs_response['logs'][:min_num])
                 print('\r{} logs retrieved'.format(len(log_list)), end='')
